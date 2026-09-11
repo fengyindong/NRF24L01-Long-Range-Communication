@@ -84,7 +84,8 @@ static uint8_t spi_rw(uint8_t value)
     uint8_t input = 0u;
     uint8_t mask;
     for (mask = 0x80u; mask != 0u; mask >>= 1) {
-        if (value & mask) GPIO_SetBits(GPIOA, GPIO_Pin_7);
+        if (value & mask) 
+					GPIO_SetBits(GPIOA, GPIO_Pin_7);
         else GPIO_ResetBits(GPIOA, GPIO_Pin_7);
         spi_bit_delay();
         GPIO_SetBits(GPIOA, GPIO_Pin_5);
@@ -101,7 +102,9 @@ static uint8_t spi_rw(uint8_t value)
 static uint8_t command(uint8_t cmd)
 {
     uint8_t status;
-    csn_low(); status = spi_rw(cmd); csn_high();
+    csn_low();
+     status = spi_rw(cmd); 
+     csn_high();
     return status;
 }
 
@@ -109,26 +112,38 @@ static uint8_t command(uint8_t cmd)
 static uint8_t read_reg(uint8_t reg)
 {
     uint8_t v;
-    csn_low(); spi_rw(CMD_R_REGISTER | (reg & 0x1Fu)); v = spi_rw(CMD_NOP); csn_high();
+    csn_low();
+    spi_rw(CMD_R_REGISTER | (reg & 0x1Fu));
+    v = spi_rw(CMD_NOP); 
+    csn_high();
     return v;
 }
 
 /* 功能：向一个单字节nRF寄存器写值。 */
 static void write_reg(uint8_t reg, uint8_t value)
 {
-    csn_low(); spi_rw(CMD_W_REGISTER | (reg & 0x1Fu)); spi_rw(value); csn_high();
+    csn_low();
+    spi_rw(CMD_W_REGISTER | (reg & 0x1Fu));
+    spi_rw(value); 
+    csn_high();
 }
 
 /* 功能：在一笔CSN事务中发送命令和连续数据，用于地址及TX载荷。 */
 static void write_buf(uint8_t cmd, const uint8_t *data, uint8_t length)
 {
-    csn_low(); spi_rw(cmd); while (length--) spi_rw(*data++); csn_high();
+    csn_low();
+    spi_rw(cmd);
+    while (length--) spi_rw(*data++);
+    csn_high();
 }
 
 /* 功能：发送命令后连续读取数据，用于地址寄存器及RX载荷。 */
 static void read_buf(uint8_t cmd, uint8_t *data, uint8_t length)
 {
-    csn_low(); spi_rw(cmd); while (length--) *data++ = spi_rw(CMD_NOP); csn_high();
+    csn_low();
+    spi_rw(cmd);
+    while (length--) *data++ = spi_rw(CMD_NOP);
+    csn_high();
 }
 
 /* 功能：提供CE脉冲和模式切换所需的微秒级保守延时。 */
@@ -136,7 +151,10 @@ static void delay_us(uint16_t us)
 {
     volatile uint32_t n;
     /* 在72 MHz下刻意留有裕量；这里只用于CE和模式切换的最小时序。 */
-    while (us--) for (n = 0; n < 60u; ++n) __NOP();
+    while (us--) 
+    {
+        for (n = 0; n < 60u; ++n) __NOP();
+    }
 }
 
 /* 功能：向STATUS的三个中断位写1，清除RX_DR、TX_DS和MAX_RT。 */
@@ -169,7 +187,8 @@ void nrf24_init(void)
     gpio.GPIO_Pin = NRF_CE_PIN;
     GPIO_Init(NRF_CE_PORT, &gpio);
     GPIO_ResetBits(GPIOA, GPIO_Pin_5 | GPIO_Pin_7);
-    csn_high(); ce_low();
+    csn_high(); 
+    ce_low();
     /* PA+LNA模块上电浪涌较大，等待电源和晶振稳定 150 ms。 */
     {
         uint32_t started = millis();
@@ -225,7 +244,7 @@ uint8_t nrf24_is_present(void)
     return 1u;
 }
 
-/* 功能：公开单寄存器读取接口，供PA9调试输出使用。 */
+/* 功能：公开单寄存器读取接口，供调试输出使用。 */
 uint8_t nrf24_read_register(uint8_t reg)
 {
     return read_reg(reg);
@@ -286,13 +305,16 @@ uint8_t nrf24_send(const uint8_t address[5], const uint8_t *data,
     write_buf(CMD_W_TX_PAYLOAD, data, length);
     /* PRX -> Standby-I -> TX需要最多约130us，不能配置完就立即脉冲CE。 */
     delay_us(150u);
-    ce_high(); delay_us(15u); ce_low();
+    ce_high(); 
+    delay_us(15u);
+    ce_low();
     started = millis();
     do {
         status = read_reg(REG_STATUS);
         if (status & STATUS_TX_DS) { write_reg(REG_STATUS, STATUS_TX_DS); return 1; }
         if (status & STATUS_MAX_RT) {
-            write_reg(REG_STATUS, STATUS_MAX_RT); command(CMD_FLUSH_TX); return 0;
+            write_reg(REG_STATUS, STATUS_MAX_RT); 
+            command(CMD_FLUSH_TX); return 0;
         }
     } while ((uint32_t)(millis() - started) < timeout_ms);
     command(CMD_FLUSH_TX);

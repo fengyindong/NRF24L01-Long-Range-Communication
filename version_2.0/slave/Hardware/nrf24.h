@@ -12,8 +12,7 @@ void nrf24_start_listening(const uint8_t address[5]);
 /* 非阻塞尝试读取一个固定32字节载荷。 */
 uint8_t nrf24_receive(uint8_t *data, uint8_t *length);
 /* 发送固定32字节载荷并等待硬件ACK。 */
-uint8_t nrf24_send(const uint8_t address[5], const uint8_t *data,
-                   uint8_t length, uint32_t timeout_ms);
+uint8_t nrf24_send(const uint8_t address[5], const uint8_t *data, uint8_t length, uint32_t timeout_ms);
 /* 清除RX_DR、TX_DS和MAX_RT中断标志。 */
 void nrf24_clear_irqs(void);
 /* 读取一个寄存器，供诊断输出使用。 */

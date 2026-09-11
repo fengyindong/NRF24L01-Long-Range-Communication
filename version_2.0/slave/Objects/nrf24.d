@@ -1,6 +1,6 @@
 .\objects\nrf24.o: Hardware\nrf24.c
 .\objects\nrf24.o: Hardware\nrf24.h
-.\objects\nrf24.o: D:\Keil MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\nrf24.o: C:\Keil uvision5 C51\MDK5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\nrf24.o: .\Start\stm32f10x.h
 .\objects\nrf24.o: .\Start\core_cm3.h
 .\objects\nrf24.o: .\Start\system_stm32f10x.h

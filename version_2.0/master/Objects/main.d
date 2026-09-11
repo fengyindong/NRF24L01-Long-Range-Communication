@@ -28,3 +28,9 @@
 .\objects\main.o: .\Library\stm32f10x_usart.h
 .\objects\main.o: .\Library\stm32f10x_wwdg.h
 .\objects\main.o: .\Library\misc.h
+.\objects\main.o: .\Hardware\app_protocol.h
+.\objects\main.o: .\Hardware\config.h
+.\objects\main.o: .\Hardware\nrf24.h
+.\objects\main.o: C:\Keil uvision5 C51\MDK5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: C:\Keil uvision5 C51\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: C:\Keil uvision5 C51\MDK5\ARM\ARMCC\Bin\..\include\stdlib.h

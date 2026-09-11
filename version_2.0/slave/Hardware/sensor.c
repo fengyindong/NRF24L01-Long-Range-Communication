@@ -152,7 +152,7 @@ void sensors_init(void)
 
     memset(&snapshot, 0, sizeof(snapshot));
     i2c_bus_init();
-    (void)i2c_bus_recover();
+    i2c_bus_recover();
 
     /* 探测 AHT20（地址0x38），只读一个字节确认存在 */
     aht_ok = i2c_read(AHT20_I2C_ADDRESS, &status, 1u);
@@ -227,7 +227,8 @@ void sensors_task(uint32_t now)
             } else {
                 snapshot.status |= SENSOR_AHT20_ERROR;
             }
-        } else {
+        }
+        else {
             snapshot.status |= SENSOR_AHT20_ERROR;
         }
 

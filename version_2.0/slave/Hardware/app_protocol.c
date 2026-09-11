@@ -13,8 +13,7 @@ uint16_t app_crc16(const uint8_t *data, uint8_t length)
     while (length--) {
         crc ^= (uint16_t)(*data++) << 8;
         for (i = 0; i < 8; ++i) {
-            crc = (crc & 0x8000u) ? (uint16_t)((crc << 1) ^ 0x1021u)
-                                  : (uint16_t)(crc << 1);
+            crc = (crc & 0x8000u) ? (uint16_t)((crc << 1) ^ 0x1021u) : (uint16_t)(crc << 1);
         }
     }
     return crc;
@@ -25,9 +24,7 @@ uint16_t app_crc16(const uint8_t *data, uint8_t length)
  * 参数：out至少32字节；type/src/dst/boot/seq描述消息；payload可为NULL。
  * 返回：成功返回32，载荷超限或帧超限返回0。
  */
-uint8_t app_build_frame(uint8_t *out, uint8_t type, uint16_t src_id,
-                        uint16_t dst_id, uint16_t boot_id, uint16_t seq,
-                        const void *payload, uint8_t payload_len)
+uint8_t app_build_frame(uint8_t *out, uint8_t type, uint16_t src_id,   uint16_t dst_id, uint16_t boot_id, uint16_t seq, const void *payload, uint8_t payload_len)
 {
     AppHeader h;
     uint16_t crc;
@@ -49,7 +46,8 @@ uint8_t app_build_frame(uint8_t *out, uint8_t type, uint16_t src_id,
     h.payload_len = payload_len;
     h.flags = 0;
     memcpy(out, &h, sizeof(h));
-    if (payload_len && payload) memcpy(out + sizeof(h), payload, payload_len);
+    if (payload_len && payload) 
+    memcpy(out + sizeof(h), payload, payload_len);
     crc = app_crc16(out, (uint8_t)(sizeof(h) + payload_len));
     out[sizeof(h) + payload_len] = (uint8_t)crc;
     out[sizeof(h) + payload_len + 1u] = (uint8_t)(crc >> 8);
@@ -61,8 +59,7 @@ uint8_t app_build_frame(uint8_t *out, uint8_t type, uint16_t src_id,
  * 参数：header和payload用于返回帧内只读指针，生命周期与frame相同。
  * 返回：1表示合法，0表示应丢弃；身份src/dst由上层业务继续检查。
  */
-uint8_t app_validate_frame(const uint8_t *frame, uint8_t frame_len,
-                           const AppHeader **header, const uint8_t **payload)
+uint8_t app_validate_frame(const uint8_t *frame, uint8_t frame_len, const AppHeader **header, const uint8_t **payload)
 {
     const AppHeader *h;
     uint8_t expected;
@@ -74,8 +71,7 @@ uint8_t app_validate_frame(const uint8_t *frame, uint8_t frame_len,
     if (h->magic != APP_MAGIC || h->version != APP_VERSION ||
         h->network_id != APP_NETWORK_ID || h->payload_len > APP_MAX_PAYLOAD ||
         expected > APP_RADIO_MAX_FRAME) return 0;
-    got_crc = (uint16_t)frame[expected - 2u] |
-              ((uint16_t)frame[expected - 1u] << 8);
+    got_crc = (uint16_t)frame[expected - 2u] | ((uint16_t)frame[expected - 1u] << 8);
     calculated = app_crc16(frame, (uint8_t)(expected - 2u));
     if (got_crc != calculated) return 0;
     *header = h;

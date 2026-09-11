@@ -7,9 +7,8 @@
 /* 网络连接配置（SIM卡及APN）                                          */
 /* ------------------------------------------------------------------ */
 
-/* 运营商APN（接入点名称）——必须按你使用的SIM卡运营商修改，不要留空。
- * 此处为中国移动物联网卡专用APN（广东区域），若使用其他卡请替换。 */
-#define CLM_APN                 "CMIOTGZSW.GD.MNC008.MCC460.GPRS"
+ /* 运营商APN（接入点名称）——必须按你使用的SIM卡运营商修改，不要留空。 */
+#define CLM_APN                 ""
 
 /* 备用APN（当主APN为空时生效），与主APN相同，确保不会因空值导致连接失败 */
 #define CLM_APN_FALLBACK        "CMIOTGZSW.GD.MNC008.MCC460.GPRS"
@@ -35,13 +34,13 @@
 
 /* MQTT客户端ID（必须唯一），若留空会自动使用默认兜底ID（见代码）。
  * 注意：必须与MQTTX等工具的Client ID不同，否则会导致互相踢下线。 */
-#define MQTT_CLIENT_ID          ""
+#define MQTT_CLIENT_ID         ""
 
 /* 发布消息的QoS等级：0=最多一次，1=至少一次，2=恰好一次 */
-#define MQTT_PUB_QOS            1u
+#define MQTT_PUB_QOS            0u
 
 /* 订阅消息的QoS等级，同上 */
-#define MQTT_SUB_QOS            1u
+#define MQTT_SUB_QOS            0u
 
 /* 网关标识符，用于主题命名，例如 environment/gateway01/... */
 #define GATEWAY_ID              "gateway01"
@@ -118,7 +117,7 @@ static const uint8_t NODE_IDS[NODE_COUNT] = {1u};
 #define MQTT_PUBLISH_TIMEOUT_MS 30000u
 
 /* CLR970 AT指令的最大长度（字节），确保不超出模块接收缓冲 */
-#define CLM_AT_LINE_MAX         400u
+#define CLM_AT_LINE_MAX         320u/*  400u */
 
 /* 普通AT指令响应超时（毫秒） */
 #define CLM_COMMAND_TIMEOUT_MS  5000u
@@ -133,7 +132,7 @@ static const uint8_t NODE_IDS[NODE_COUNT] = {1u};
 #define DEBUG_VERBOSE           0u
 
 /* 固件版本号，用于日志显示 */
-#define GATEWAY_FW_VERSION      "master-20260902-r6"
+#define GATEWAY_FW_VERSION      "App version 4"
 
 /* MQTT主题根路径，通常格式为 environment/<gateway_id> */
 #define MASTER_MQTT_ROOT        "environment/gateway01"

@@ -1,6 +1,6 @@
 .\objects\i2c_bus.o: Hardware\i2c_bus.c
 .\objects\i2c_bus.o: Hardware\i2c_bus.h
-.\objects\i2c_bus.o: D:\Keil MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\i2c_bus.o: C:\Keil uvision5 C51\MDK5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\i2c_bus.o: .\Start\stm32f10x.h
 .\objects\i2c_bus.o: .\Start\core_cm3.h
 .\objects\i2c_bus.o: .\Start\system_stm32f10x.h

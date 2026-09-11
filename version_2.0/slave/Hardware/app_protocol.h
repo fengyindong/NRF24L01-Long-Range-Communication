@@ -149,9 +149,7 @@ uint16_t app_crc16(const uint8_t *data, uint8_t length);
  *   payload_len - 载荷数据长度（不能超过APP_MAX_PAYLOAD）
  * 返回：成功返回帧总长度（一般为32），参数非法时返回0
  */
-uint8_t app_build_frame(uint8_t *out, uint8_t type, uint16_t src_id,
-                        uint16_t dst_id, uint16_t boot_id, uint16_t seq,
-                        const void *payload, uint8_t payload_len);
+uint8_t app_build_frame(uint8_t *out, uint8_t type, uint16_t src_id,  uint16_t dst_id, uint16_t boot_id, uint16_t seq, const void *payload, uint8_t payload_len);
 
 /* 
  * 功能：验证接收到的帧格式和CRC校验。
@@ -162,7 +160,6 @@ uint8_t app_build_frame(uint8_t *out, uint8_t type, uint16_t src_id,
  *   payload   - 输出参数，返回载荷指针
  * 返回：校验通过返回1，失败返回0
  */
-uint8_t app_validate_frame(const uint8_t *frame, uint8_t frame_len,
-                           const AppHeader **header, const uint8_t **payload);
+uint8_t app_validate_frame(const uint8_t *frame, uint8_t frame_len, const AppHeader **header, const uint8_t **payload);
 
 #endif /* APP_PROTOCOL_H */

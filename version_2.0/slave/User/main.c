@@ -97,7 +97,10 @@ static void dbg_c(char c)
 static void dbg_s(const char *s)
 {
     if (!APP_DEBUG_ENABLED) return;
-    while (*s) dbg_c(*s++);
+    while (*s) 
+    {
+        dbg_c(*s++);
+    }
 }
 
 /* 以两位大写十六进制输出一个字节，便于阅读寄存器值。 */
@@ -148,7 +151,7 @@ static void board_init(void)
 {
     GPIO_InitTypeDef g;
     SystemCoreClockUpdate();
-    SysTick_Config(SystemCoreClock / 1000u);
+    SysTick_Config(SystemCoreClock / 1000u);           //1ms节拍
 
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
     g.GPIO_Pin = GPIO_Pin_13;

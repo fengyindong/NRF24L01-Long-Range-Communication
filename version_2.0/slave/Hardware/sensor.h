@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 typedef struct {
-    int16_t temperature_centi_c;
+    int16_t temperature_centi_c;              
     uint16_t humidity_centi_rh;
     uint32_t pressure_pa;
     uint8_t status;

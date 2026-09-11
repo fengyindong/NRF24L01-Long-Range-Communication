@@ -1,4 +1,4 @@
-Component: ARM Compiler 5.05 update 2 (build 169) Tool: armlink [4d0f33]
+Component: ARM Compiler 5.06 update 1 (build 61) Tool: armlink [4d35a8]
 
 ==============================================================================
 
@@ -1338,21 +1338,21 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       364          0          0          0          0       4411   app_protocol.o
+       364          0          0          0          0       4747   app_protocol.o
          0          0          0          0          0         32   core_cm3.o
-       734         22          0          0          0       7460   i2c_bus.o
-      2232        452         36         29         42     255889   main.o
-      1102         32          0          0          0      10734   nrf24.o
-      1616        106          0         24         40       8333   sensor.o
-        36          8        236          0       1024        768   startup_stm32f10x_md.o
-       304          0          0          0          0      11660   stm32f10x_gpio.o
-        24          0          0          0          0       3180   stm32f10x_it.o
-       244         26          0         20          0      12337   stm32f10x_rcc.o
-       298          6          0          0          0      10171   stm32f10x_usart.o
-       492         50          0         20          0       2613   system_stm32f10x.o
+       734         22          0          0          0       8260   i2c_bus.o
+      2232        452         36         29         42     257157   main.o
+      1102         32          0          0          0      11682   nrf24.o
+      1616        106          0         24         40       9113   sensor.o
+        36          8        236          0       1024        808   startup_stm32f10x_md.o
+       304          0          0          0          0      11928   stm32f10x_gpio.o
+        24          0          0          0          0       3508   stm32f10x_it.o
+       244         26          0         20          0      12553   stm32f10x_rcc.o
+       298          6          0          0          0      10491   stm32f10x_usart.o
+       492         50          0         20          0       2853   system_stm32f10x.o
 
     ----------------------------------------------------------------------
-      7458        702        304         96       1112     327588   Object Totals
+      7458        702        304         96       1112     333132   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         12          0          0          3          6          0   (incl. Padding)
 
@@ -1397,8 +1397,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      7876        718        304         96       1112     323668   Grand Totals
-      7876        718        304         96       1112     323668   ELF Image Totals
+      7876        718        304         96       1112     329212   Grand Totals
+      7876        718        304         96       1112     329212   ELF Image Totals
       7876        718        304         96          0          0   ROM Totals
 
 ==============================================================================

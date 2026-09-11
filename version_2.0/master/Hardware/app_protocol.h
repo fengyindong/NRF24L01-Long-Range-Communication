@@ -148,9 +148,7 @@ uint16_t app_crc16(const uint8_t *data, uint8_t length);
  *   payload_len - 载荷数据长度
  * 返回：成功返回帧长度，失败返回0
  */
-uint8_t app_build_frame(uint8_t *out, uint8_t type, uint16_t src_id,
-                        uint16_t dst_id, uint16_t boot_id, uint16_t seq,
-                        const void *payload, uint8_t payload_len);
+uint8_t app_build_frame(uint8_t *out, uint8_t type, uint16_t src_id,  uint16_t dst_id, uint16_t boot_id, uint16_t seq, const void *payload, uint8_t payload_len);
 
 /* 
  * 功能：验证帧的格式和CRC校验，并返回帧头与载荷的只读指针。
