@@ -1,0 +1,81 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¶ÃVision V5.18.0.0
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: feng Administrator, dewod, LIC=HN0AE-5FP3P-45LT5-GG8Q1-WDZA0-NPKNQ
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Standard  Version: 5.18
+Toolchain Path:  C:\Keil uvision5 C51\MDK5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 1 (build 61)
+Assembler:       Armasm.exe V5.06 update 1 (build 61)
+Linker/Locator:  ArmLink.exe V5.06 update 1 (build 61)
+Library Manager: ArmAr.exe V5.06 update 1 (build 61)
+Hex Converter:   FromElf.exe V5.06 update 1 (build 61)
+CPU DLL:         SARMCM3.DLL V5.18
+Dialog DLL:      DCM.DLL V1.13.6.0
+Target DLL:      UL2CM3.DLL V1.157.5.0
+Dialog DLL:      TCM.DLL V1.14.8.0
+ 
+<h2>Project:</h2>
+C:\Users\Administrator\Desktop\NRF24L01 Long-Range Communication\version_2.0\master1\stm32_master.uvprojx
+Project File Date:  09/07/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil uvision5 C51\MDK5\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling main.c...
+User\main.c(136): warning:  #9-D: nested comment is not allowed
+  // static uint8_t rf_command_active;        /* Ê†?ËÆ?ÂΩ?Ââ?Êò?Âê?Êú?Ê≠?Âú?Âè?ÈÄ?Áö?Âë?‰ª? */
+User\main.c(920): error:  #119: cast to type "Cmd" is not allowed
+      cmds[ct] = (Cmd){node, code, id, value};
+User\main.c(920): error:  #29: expected an expression
+      cmds[ct] = (Cmd){node, code, id, value};
+User\main.c(1335): error:  #268: declaration may not appear after executable statement in block
+              Command c = {cmd.id, cmd.code, 0, cmd.value};
+User\main.c(1335): error:  #28: expression must have a constant value
+              Command c = {cmd.id, cmd.code, 0, cmd.value};
+User\main.c(1335): error:  #28: expression must have a constant value
+              Command c = {cmd.id, cmd.code, 0, cmd.value};
+User\main.c(1335): error:  #28: expression must have a constant value
+              Command c = {cmd.id, cmd.code, 0, cmd.value};
+User\main.c(1576): error:  #29: expected an expression
+                  for (volatile uint32_t d = 0; d < 800000u; ++d) __NOP();   /* ÈÉ?Âà?Âª?Êó? */
+User\main.c(1576): error:  #20: identifier "d" is undefined
+                  for (volatile uint32_t d = 0; d < 800000u; ++d) __NOP();   /* ÈÉ?Âà?Âª?Êó? */
+User\main.c(1586): error:  #29: expected an expression
+                  for (volatile uint32_t d = 0; d < 4000000u; ++d) __NOP();
+User\main.c(1586): error:  #20: identifier "d" is undefined
+                  for (volatile uint32_t d = 0; d < 4000000u; ++d) __NOP();
+User\main.c(1599): error:  #254: type name is not allowed
+      for (uint8_t i = 0; i < NODE_COUNT; i++)      /* Âà?Âß?Âå?Ëä?ÁÇ? */
+User\main.c(1599): error:  #65: expected a ";"
+      for (uint8_t i = 0; i < NODE_COUNT; i++)      /* Âà?Âß?Âå?Ëä?ÁÇ? */
+User\main.c(1599): error:  #20: identifier "i" is undefined
+      for (uint8_t i = 0; i < NODE_COUNT; i++)      /* Âà?Âß?Âå?Ëä?ÁÇ? */
+User\main.c(256): warning:  #177-D: variable "rf_frame" was declared but never referenced
+  static uint8_t rf_frame[32];       /* ÂΩ?Ââ?Ê≠?Âú?Êû?Âª?Êà?Âè?ÈÄ?Áö?Â∏?Áº?ÂÜ?Âå? */
+User\main.c(260): warning:  #177-D: variable "rf_cmd" was declared but never referenced
+  static uint8_t rf_cmd;             /* È¢?Áï?Ôº?ÂΩ?Ââ?Âë?‰ª?‰ª?Á†? */
+User\main.c(261): warning:  #177-D: variable "seq_next" was declared but never referenced
+  static uint16_t rf_seq, seq_next, master_boot; /* Â∏?Â∫?Âà?Âè?„Ä?‰∏?‰∏Ä‰∏?Â∫?Âà?Âè?„Ä?‰∏?Êú?Âê?Âä? ID */
+User\main.c(262): warning:  #177-D: variable "rf_retry" was declared but never referenced
+  static uint32_t rf_deadline, rf_retry, rf_cmd_id, rf_cmd_value; /* Ë∂?Êó?Êó?Èó?„Ä?Èá?ËØ?Èó?Èö?„Ä?Âë?‰ª? ID„Ä?Âë?‰ª?ÂÄ? */
+User\main.c(262): warning:  #177-D: variable "rf_cmd_value" was declared but never referenced
+  static uint32_t rf_deadline, rf_retry, rf_cmd_id, rf_cmd_value; /* Ë∂?Êó?Êó?Èó?„Ä?Èá?ËØ?Èó?Èö?„Ä?Âë?‰ª? ID„Ä?Âë?‰ª?ÂÄ? */
+User\main.c: 6 warnings, 13 errors
+".\Objects\stm32_master.axf" - 13 Error(s), 6 Warning(s).
+
+<h2>Collection of Component include folders:</h2>
+  C:\Users\Administrator\Desktop\NRF24L01 Long-Range Communication\version_2.0\master1\RTE
+  C:\Keil uvision5 C51\Package\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+Build Time Elapsed:  00:00:00
+</pre>
+</body>
+</html>
